@@ -29,3 +29,8 @@ Name | Required? | Default | Description
 ---|---|---|---
 api_key | Y | N/A | TODO
 app_id | Y | N/A | TODO
+
+## TODOs
+
+- [ ] Simplify input keys
+- [ ] Write docs

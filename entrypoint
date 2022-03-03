@@ -1,0 +1,15 @@
+#!/bin/sh
+#
+# Upload sourcemap to New Relic
+
+set -e
+
+curl -H "Api-Key: ${INPUT_NEW_RELIC_USER_API_KEY}" \
+  -F "sourcemap=@${INPUT_SOURCE_MAP_PATH}" \
+  -F "javascriptUrl=${INPUT_JS_URL}" \
+  -F "releaseId=${INPUT_RELEASE_ID}" \
+  -F "releaseName=${INPUT_RELEASE_NAME}" \
+  -F "repoUrl=${INPUT_GITHUB_REPOSITORY_URL}" \
+  -F "buildCommit=${GITHUB_SHA}" \
+
+"https://sourcemaps.service.newrelic.com/v2/applications/${INPUT_NEW_RELIC_APP_ID}/sourcemaps"

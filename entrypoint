@@ -4,12 +4,20 @@
 
 set -e
 
-curl -H "Api-Key: ${INPUT_NEW_RELIC_USER_API_KEY}" \
-  -F "sourcemap=@${INPUT_SOURCE_MAP_PATH}" \
+if [ -z "${INPUT_RELEASE_ID}" ]; then
+  INPUT_RELEASE_ID="${GITHUB_SHA}"
+fi
+
+if [ -z "${INPUT_RELEASE_NAME}" ]; then
+  INPUT_RELEASE_NAME="${GITHUB_SHA}"
+fi
+
+curl -H "Api-Key: ${INPUT_API_KEY}" \
+  -F "sourcemap=@${INPUT_SOURCEMAP_PATH}" \
   -F "javascriptUrl=${INPUT_JS_URL}" \
   -F "releaseId=${INPUT_RELEASE_ID}" \
   -F "releaseName=${INPUT_RELEASE_NAME}" \
   -F "repoUrl=${INPUT_GITHUB_REPOSITORY_URL}" \
   -F "buildCommit=${GITHUB_SHA}" \
 
-"https://sourcemaps.service.newrelic.com/v2/applications/${INPUT_NEW_RELIC_APP_ID}/sourcemaps"
+"https://sourcemaps.service.newrelic.com/v2/applications/${INPUT_APP_ID}/sourcemaps"

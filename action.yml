@@ -4,10 +4,10 @@ branding:
   icon: 'upload'
   color: 'gray-dark'
 inputs:
-  new_relic_user_api_key:
+  api_key:
     description: 'A valid user API key'
     required: true
-  new_relic_app_id:
+  app_id:
     description: 'A valid application id'
     required: true
   sourcemap_path:
@@ -17,11 +17,11 @@ inputs:
     description: 'URL of the file on your server'
     required: true
   release_id:
-    description: 'Unique id for the release, e.g. git hash or semver'
-    required: true
+    description: 'Unique id for the release, e.g. git hash or semver, default git commit hash'
+    required: false
   release_name:
-    description: 'Name for the release'
-    required: true
+    description: 'Name for the release, e.g. `v1.0`, default git commit hash'
+    required: false
   github_repository_url:
     description: 'URL of the repository'
     required: true
@@ -30,9 +30,9 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.new_relic_user_api_key }}
-    - ${{ inputs.new_relic_app_id }}
-    - ${{ inputs.source_map }}
+    - ${{ inputs.api_key }}
+    - ${{ inputs.app_id }}
+    - ${{ inputs.sourcemap_path }}
     - ${{ inputs.javascript_url }}
     - ${{ inputs.release_id }}
     - ${{ inputs.release_name }}

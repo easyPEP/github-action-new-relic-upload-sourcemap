@@ -39,3 +39,9 @@ javascript_url | Y | N/A | URL of the file on your server
 release_id | N | Commit Hash | Unique id for the release, e.g. git hash or semver, default git commit hash
 release_name | N | Commit Hash | Name for the release, e.g. `v1.0`, default git commit hash
 github_repository_url | Y | N/A | URL of the repository
+
+## License
+
+[MIT][License] (c) 2022 easyPEP and contributors
+
+License: https://github.com/easyPEP/github-action-new-relic-upload-sourcemap/blob/master/LICENSE

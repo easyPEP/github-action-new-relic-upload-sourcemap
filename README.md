@@ -17,14 +17,14 @@ jobs:
     - uses: actions/checkout@v3
     - run: |
         echo "REMOTE_URL=$(git remote get-url origin)">>$GITHUB_ENV
-    - uses: frncsdrk/github-action-new-relic-upload-sourcemap@master
+    - uses: easyPEP/github-action-new-relic-upload-sourcemap@master
       with:
         api_key: ${{ secrets.NEW_RELIC_USER_API_KEY }}
         app_id: ${ secrets.NEW_RELIC_APP_ID }
         sourcemap_path: path/to/application.js.map
         javascript_url: https://example.com/assets/application.min.js
-        release_id: ${}
-        release_name: ${}
+        release_id: ${GITHUB_SHA}
+        release_name: prod-${GITHUB_SHA}
         github_repository_url: ${REMOTE_URL}
 ```
 

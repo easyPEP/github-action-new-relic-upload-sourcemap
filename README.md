@@ -42,6 +42,6 @@ github_repository_url | Y | N/A | URL of the repository
 
 ## License
 
-[MIT][License] (c) 2022 easyPEP and contributors
+[MIT][License] (c) 2022 easyPEP UG and contributors
 
 [License]: https://github.com/easyPEP/github-action-new-relic-upload-sourcemap/blob/master/LICENSE

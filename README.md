@@ -17,7 +17,7 @@ jobs:
     - uses: actions/checkout@v3
     - run: |
         echo "REMOTE_URL=$(git remote get-url origin)">>$GITHUB_ENV
-    - uses: easyPEP/github-action-new-relic-upload-sourcemap@master
+    - uses: easyPEP/github-action-new-relic-upload-sourcemap@main
       with:
         api_key: ${{ secrets.NEW_RELIC_USER_API_KEY }}
         app_id: ${ secrets.NEW_RELIC_APP_ID }

@@ -19,5 +19,4 @@ curl -H "Api-Key: ${INPUT_API_KEY}" \
   -F "releaseName=${INPUT_RELEASE_NAME}" \
   -F "repoUrl=${INPUT_GITHUB_REPOSITORY_URL}" \
   -F "buildCommit=${GITHUB_SHA}" \
-
-"https://sourcemaps.service.newrelic.com/v2/applications/${INPUT_APP_ID}/sourcemaps"
+  "https://sourcemaps.service.newrelic.com/v2/applications/${INPUT_APP_ID}/sourcemaps"

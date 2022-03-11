@@ -16,16 +16,17 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - run: |
-        echo "REMOTE_URL=$(git remote get-url origin)">>$GITHUB_ENV
+        echo "REMOTE_URL=$(git remote get-url origin)" >> $GITHUB_ENV
+        echo "GIT_SLUG=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
     - uses: easyPEP/github-action-new-relic-upload-sourcemap@main
       with:
         api_key: ${{ secrets.NEW_RELIC_USER_API_KEY }}
-        app_id: ${ secrets.NEW_RELIC_APP_ID }
+        app_id: ${{ secrets.NEW_RELIC_APP_ID }}
         sourcemap_path: path/to/application.js.map
         javascript_url: https://example.com/assets/application.min.js
-        release_id: ${GITHUB_SHA}
-        release_name: prod-${GITHUB_SHA}
-        github_repository_url: ${REMOTE_URL}
+        release_id: ${{ env.GIT_SLUG }}
+        release_name: prod-${{ env.GIT_SLUG }}
+        github_repository_url: ${{ env.REMOTE_URL }}
 ```
 
 ## Inputs
